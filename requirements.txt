@@ -1,0 +1,9 @@
+# Django 核心框架
+Django==5.0.1
+
+# 静态文件服务（Docker 容器中必需）
+whitenoise==6.6.0
+
+# 备注：
+# - 所有依赖通过清华镜像源安装（Dockerfile 中配置）
+# - whitenoise 确保 Django 能直接服务 CSS/JS 文件（无需 Nginx）

@@ -1,0 +1,36 @@
+# Git 文件
+.git
+.gitignore
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# 虚拟环境
+venv/
+env/
+ENV/
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 文档（构建时不需要）
+docs/
+README.md
+
+# 日志
+*.log
+
+# 数据库文件（开发时的）
+*.sqlite3
+
+# 临时文件
+*.tmp
+.DS_Store

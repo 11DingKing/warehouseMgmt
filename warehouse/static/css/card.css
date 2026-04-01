@@ -1,0 +1,477 @@
+/**
+ * 卡片模块
+ * 仓库管理系统 - Alkaid-SOP 3.0
+ */
+
+/* ===== 基础卡片 ===== */
+.card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== 卡片头部 ===== */
+.card-header {
+  padding: var(--spacing-5) var(--spacing-6);
+  border-bottom: 1px solid var(--color-divider);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.card-subtitle {
+  margin: var(--spacing-1) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* ===== 卡片内容 ===== */
+.card-body {
+  padding: var(--spacing-6);
+}
+
+.card-body.no-padding {
+  padding: 0;
+}
+
+/* ===== 卡片底部 ===== */
+.card-footer {
+  padding: var(--spacing-4) var(--spacing-6);
+  background: var(--color-bg-tertiary);
+  border-top: 1px solid var(--color-divider);
+}
+
+/* ===== 统计卡片 ===== */
+.stat-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  transition: var(--transition-normal);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-4);
+}
+
+.stat-card-icon.primary {
+  background: var(--color-primary-alpha-10);
+  color: var(--color-primary);
+}
+
+.stat-card-icon.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-success);
+}
+
+.stat-card-icon.warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning);
+}
+
+.stat-card-icon.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+}
+
+.stat-card-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-1);
+}
+
+.stat-card-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.stat-card-change {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  margin-top: var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+.stat-card-change.up {
+  color: var(--color-success);
+}
+
+.stat-card-change.down {
+  color: var(--color-error);
+}
+
+/* ===== Mini 统计卡片 ===== */
+.stat-card.mini {
+  padding: var(--spacing-4) var(--spacing-5);
+  text-align: center;
+}
+
+.stat-card.mini .stat-card-value {
+  font-size: var(--font-size-2xl);
+}
+
+.stat-card.mini .stat-card-label {
+  margin-top: var(--spacing-1);
+}
+
+/* ===== 卡片链接 ===== */
+.card-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.card-link:hover {
+  color: var(--color-primary-light);
+}
+
+/* ===== 图表样式 ===== */
+.chart-container {
+  height: 200px;
+}
+
+.simple-chart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-bars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  padding-bottom: var(--spacing-2);
+}
+
+.chart-bar-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.chart-bar {
+  width: 100%;
+  max-width: 40px;
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-dark));
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  min-height: 5%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.chart-bar:hover {
+  background: linear-gradient(180deg, var(--color-primary-light), var(--color-primary));
+}
+
+.chart-bar-value {
+  position: absolute;
+  top: -24px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.chart-labels {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--spacing-2);
+  border-top: 1px solid var(--color-divider);
+}
+
+.chart-label {
+  flex: 1;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ===== 状态分布 ===== */
+.status-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  padding: var(--spacing-4) 0;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.status-bar {
+  height: 24px;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.status-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.8s var(--ease-out);
+  min-width: 2%;
+}
+
+.status-bar-fill.pending {
+  background: linear-gradient(90deg, var(--color-warning), #fbbf24);
+}
+
+.status-bar-fill.approved {
+  background: linear-gradient(90deg, var(--color-success), #34d399);
+}
+
+.status-bar-fill.rejected {
+  background: linear-gradient(90deg, var(--color-error), #f87171);
+}
+
+.status-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.status-count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* ===== Icon 类型 ===== */
+.stat-card-icon.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--color-primary);
+}
+
+/* ===== 开发中占位卡片 ===== */
+.under-dev-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  padding: var(--spacing-10);
+}
+
+.under-dev-icon {
+  font-size: 72px;
+  margin-bottom: var(--spacing-6);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.under-dev-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-3);
+}
+
+.under-dev-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ===== 网格布局 ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.card-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .card-grid-3,
+  .card-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid-2,
+  .card-grid-3,
+  .card-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== 仪表盘布局 ===== */
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+}
+
+.dashboard-row {
+  display: flex;
+  gap: var(--spacing-5);
+  flex-wrap: wrap;
+}
+
+.dashboard-row .flex-1 {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* ===== 横向统计卡片 ===== */
+.stat-card-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4) var(--spacing-5);
+  flex: 1;
+  min-width: 140px;
+  transition: var(--transition-normal);
+}
+
+.stat-card-inline:hover {
+  border-color: var(--color-primary-alpha-30);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-inline-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}
+
+.stat-inline-icon.primary {
+  background: var(--color-primary-alpha-10);
+}
+
+.stat-inline-icon.success {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.stat-inline-icon.warning {
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.stat-inline-icon.info {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.stat-inline-icon.accent {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.stat-inline-icon.secondary {
+  background: var(--color-bg-tertiary);
+}
+
+.stat-inline-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.stat-inline-value {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.stat-inline-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-row {
+    flex-wrap: wrap;
+  }
+  .stat-card-inline {
+    min-width: calc(25% - var(--spacing-5));
+  }
+}
+
+@media (max-width: 768px) {
+  .stat-card-inline {
+    min-width: calc(50% - var(--spacing-5));
+  }
+  .dashboard-row .flex-1 {
+    min-width: 100%;
+  }
+}

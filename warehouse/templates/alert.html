@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>预警中心 - 仓库管理系统</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/loading.css">
+  <link rel="stylesheet" href="/static/css/toast.css">
+  <link rel="stylesheet" href="/static/css/button.css">
+  <link rel="stylesheet" href="/static/css/sidebar.css">
+  <link rel="stylesheet" href="/static/css/card.css">
+  <link rel="stylesheet" href="/static/css/table.css">
+  <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">📦</div>
+        <span class="sidebar-logo-text">仓库管理系统</span>
+      </div>
+      <nav class="sidebar-menu" id="sidebar-menu"></nav>
+    </aside>
+
+    <!-- 内容区域 -->
+    <div class="content-wrapper">
+      <!-- 顶部栏 -->
+      <header class="header">
+        <div class="header-left">
+          <h1 class="header-title">预警中心</h1>
+        </div>
+        <div class="header-right">
+          <div class="user-info">
+            <div class="user-avatar">{{ user.username|slice:":1"|upper }}</div>
+            <span class="user-name">{{ user.username }}</span>
+          </div>
+          <button class="logout-btn" id="logout-btn">退出登录</button>
+        </div>
+      </header>
+
+      <!-- 主内容 -->
+      <main class="main-content dashboard-content">
+        <!-- 预警统计 - 4列网格对齐 -->
+        <div class="stats-grid">
+          <div class="stat-card-inline">
+            <div class="stat-inline-icon warning">⚠️</div>
+            <div class="stat-inline-content">
+              <div class="stat-inline-value" id="alert-pending">0</div>
+              <div class="stat-inline-label">待审批积压</div>
+            </div>
+          </div>
+          <div class="stat-card-inline">
+            <div class="stat-inline-icon error">🚨</div>
+            <div class="stat-inline-content">
+              <div class="stat-inline-value" id="alert-rejected">0</div>
+              <div class="stat-inline-label">驳回待处理</div>
+            </div>
+          </div>
+          <div class="stat-card-inline">
+            <div class="stat-inline-icon info">📊</div>
+            <div class="stat-inline-content">
+              <div class="stat-inline-value" id="alert-today">0</div>
+              <div class="stat-inline-label">今日入库</div>
+            </div>
+          </div>
+          <div class="stat-card-inline">
+            <div class="stat-inline-icon success">✅</div>
+            <div class="stat-inline-content">
+              <div class="stat-inline-value" id="system-status">正常</div>
+              <div class="stat-inline-label">系统状态</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 预警列表 -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">预警事项</h3>
+            <button class="btn btn-secondary btn-sm" id="btn-refresh">🔄 刷新预警</button>
+          </div>
+          <div class="card-body no-padding">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>级别</th>
+                  <th>类型</th>
+                  <th>描述</th>
+                  <th>数量</th>
+                  <th>建议操作</th>
+                </tr>
+              </thead>
+              <tbody id="alert-table">
+                <tr><td colspan="5" class="table-empty">加载中...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/loading.js"></script>
+  <script src="/static/js/toast.js"></script>
+  <script src="/static/js/sidebar.js"></script>
+  <script>Sidebar.init('{{ current_page }}');</script>
+  <script src="/static/js/pages/alert.js"></script>
+</body>
+</html>

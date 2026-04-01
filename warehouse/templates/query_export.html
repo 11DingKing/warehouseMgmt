@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询导出 - 仓库管理系统</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/loading.css">
+  <link rel="stylesheet" href="/static/css/toast.css">
+  <link rel="stylesheet" href="/static/css/button.css">
+  <link rel="stylesheet" href="/static/css/form.css">
+  <link rel="stylesheet" href="/static/css/sidebar.css">
+  <link rel="stylesheet" href="/static/css/card.css">
+  <link rel="stylesheet" href="/static/css/table.css">
+  <link rel="stylesheet" href="/static/css/page.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- 侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-logo-icon">📦</div>
+        <span class="sidebar-logo-text">仓库管理系统</span>
+      </div>
+      <nav class="sidebar-menu" id="sidebar-menu"></nav>
+    </aside>
+
+    <!-- 内容区域 -->
+    <div class="content-wrapper">
+      <!-- 顶部栏 -->
+      <header class="header">
+        <div class="header-left">
+          <h1 class="header-title">查询导出</h1>
+        </div>
+        <div class="header-right">
+          <div class="user-info">
+            <div class="user-avatar">{{ user.username|slice:":1"|upper }}</div>
+            <span class="user-name">{{ user.username }}</span>
+          </div>
+          <button class="logout-btn" id="logout-btn">退出登录</button>
+        </div>
+      </header>
+
+      <!-- 主内容 -->
+      <main class="main-content dashboard-content">
+        <!-- 筛选区域 -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">筛选条件</h3>
+          </div>
+          <div class="card-body">
+            <form id="query-form" class="filter-form">
+              <div class="filter-row">
+                <div class="filter-item">
+                  <label class="form-label">货物名称</label>
+                  <input type="text" class="form-input" id="filter-name" placeholder="输入货物名称">
+                </div>
+                <div class="filter-item">
+                  <label class="form-label">状态</label>
+                  <select class="form-select" id="filter-status">
+                    <option value="">全部状态</option>
+                    <option value="pending">待审批</option>
+                    <option value="approved">已通过</option>
+                    <option value="rejected">已驳回</option>
+                  </select>
+                </div>
+                <div class="filter-item">
+                  <label class="form-label">入库日期</label>
+                  <input type="date" class="form-input" id="filter-date">
+                </div>
+                <div class="filter-actions">
+                  <button type="submit" class="btn btn-primary">🔍 查询</button>
+                  <button type="button" class="btn btn-secondary" id="btn-export">📥 导出</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 数据表格 -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">查询结果</h3>
+            <span class="card-subtitle" id="result-count">共 0 条记录</span>
+          </div>
+          <div class="card-body no-padding">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>货物名称</th>
+                  <th>品种</th>
+                  <th>品类</th>
+                  <th>数量</th>
+                  <th>单位</th>
+                  <th>入库日期</th>
+                  <th>状态</th>
+                  <th>操作员</th>
+                </tr>
+              </thead>
+              <tbody id="data-table">
+                <tr><td colspan="9" class="table-empty">请设置筛选条件后查询</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 分页 -->
+          <div class="table-pagination" id="pagination-container">
+            <div class="pagination-info" id="pagination-info">第 1 页，共 1 页</div>
+            <div class="pagination-buttons" id="pagination-buttons"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/loading.js"></script>
+  <script src="/static/js/toast.js"></script>
+  <script src="/static/js/sidebar.js"></script>
+  <script src="/static/js/pagination.js"></script>
+  <script>Sidebar.init('{{ current_page }}');</script>
+  <script src="/static/js/pages/query_export.js"></script>
+</body>
+</html>

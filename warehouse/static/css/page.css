@@ -1,0 +1,111 @@
+/**
+ * Page Module - 页面级别通用样式
+ * 包含：筛选表单、统计网格、预警级别、分页省略号等
+ */
+
+/* ===== 统计卡片网格布局 ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
+}
+
+.stats-grid .stat-card-inline {
+  flex: none;
+  min-width: 0;
+}
+
+/* ===== 筛选表单 ===== */
+.filter-form {
+  width: 100%;
+}
+
+.filter-row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 180px;
+}
+
+.filter-item .form-input,
+.filter-item .form-select {
+  width: 100%;
+}
+
+.filter-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-left: auto;
+}
+
+/* ===== 预警级别标签 ===== */
+.alert-level {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.alert-level.high {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-error);
+}
+
+.alert-level.medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+}
+
+.alert-level.low {
+  background: rgba(59, 130, 246, 0.15);
+  color: var(--color-primary);
+}
+
+/* ===== 扩展图标颜色 ===== */
+.stat-inline-icon.error {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* ===== 分页省略号 ===== */
+.pagination-ellipsis {
+  padding: 0 var(--spacing-2);
+  color: var(--color-text-secondary);
+}
+
+/* ===== 响应式适配 ===== */
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-item {
+    min-width: 100%;
+  }
+  
+  .filter-actions {
+    margin-left: 0;
+    margin-top: var(--spacing-2);
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
